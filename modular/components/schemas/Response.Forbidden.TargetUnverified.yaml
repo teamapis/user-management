@@ -1,0 +1,11 @@
+description: |
+  Cannot manage an unverified target account
+type: object
+required:
+  - key
+properties:
+  key:
+    type: string
+    enum:
+      - forbidden.targetUnverified
+    example: forbidden.targetUnverified

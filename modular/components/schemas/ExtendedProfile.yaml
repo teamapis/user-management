@@ -1,0 +1,10 @@
+type: object
+properties:
+  job_title:
+    $ref: ./JobTitle.yaml
+  organization:
+    $ref: ./Organization.yaml
+  department:
+    $ref: ./Department.yaml
+  location:
+    $ref: ./Location.yaml

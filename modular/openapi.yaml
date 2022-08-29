@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: 'IDv2: User management'
+x-atlassian-narrative:
+  documents:
+    - title: About the user management REST API
+      anchor: about
+      body: >-
+        Use this REST API to administer and edit the managed accounts in your
+        organization by account ID.
+
+        You can find the account ID for a user with
+
+        [get users in an
+        organization](/cloud/admin/organization/rest/#api-orgs-orgId-users-get).
+    - title: Authentication and authorization
+      anchor: auth
+      body: >-
+        To use the user management REST API you must have a valid API key. The
+        API key protects the API
+
+        and ensures that you have permission to update and deactivate the
+        accounts owned by your organization.
+
+        You can use the same API key for the organizations REST API and the user
+        management REST API.
+
+        For more information, see [Create an API
+        key](https://confluence.atlassian.com/x/jPnJOQ).
+
+
+        Once you have your API key, you can provide it as a bearer token
+
+        in the `Authorization` part of your HTTPS header.
+    - title: Version and URI
+      anchor: uri
+      body: >-
+
+        This documentation is for version 1 of the user management REST API. The
+        URIs for resources
+
+        have the following structure:
+
+
+        ```
+
+        https://api.atlassian.com/users/<resource-name>
+
+        ```
+security:
+  - bearerAuth: []
+servers:
+  - url: https://api.atlassian.com
+    description: Atlassian API endpoint
+paths:
+  /users/{account_id}/manage:
+    $ref: paths/users_{account_id}_manage.yaml
+  /users/{account_id}/manage/profile:
+    $ref: paths/users_{account_id}_manage_profile.yaml
+  /users/{account_id}/manage/email:
+    $ref: paths/users_{account_id}_manage_email.yaml
+  /users/{accountId}/manage/api-tokens:
+    $ref: paths/users_{accountId}_manage_api-tokens.yaml
+  /users/{accountId}/manage/api-tokens/{tokenId}:
+    $ref: paths/users_{accountId}_manage_api-tokens_{tokenId}.yaml
+  /users/{account_id}/manage/lifecycle/disable:
+    $ref: paths/users_{account_id}_manage_lifecycle_disable.yaml
+  /users/{account_id}/manage/lifecycle/enable:
+    $ref: paths/users_{account_id}_manage_lifecycle_enable.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

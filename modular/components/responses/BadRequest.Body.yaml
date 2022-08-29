@@ -1,0 +1,16 @@
+description: |
+  The request body was malformed or a field violated its constraints.
+content:
+  application/json:
+    schema:
+      type: object
+      oneOf:
+        - $ref: ../schemas/Response.BadRequest.BodyParseFailure.yaml
+        - $ref: ../schemas/Response.BadRequest.FieldConstraintsViolated.yaml
+      discriminator:
+        propertyName: key
+        mapping:
+          bodyParseFailure: ../schemas/Response.BadRequest.BodyParseFailure.yaml
+          fieldConstraintsViolated: ../schemas/Response.BadRequest.FieldConstraintsViolated.yaml
+      example:
+        key: bodyParseFailure

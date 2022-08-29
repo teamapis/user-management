@@ -1,0 +1,29 @@
+post:
+  summary: Activate a user
+  description: >
+
+    Activates the specified user account. The permission to make use of this
+    resource is exposed by the `lifecycle.enablement` privilege.
+
+    You can optionally set a message associated with the block that will be
+    shown to the user on attempted authentication. If none is supplied, a
+    default message will be used.
+  tags:
+    - lifecycle
+  parameters:
+    - in: path
+      name: account_id
+      schema:
+        $ref: ../components/schemas/AccountId.yaml
+      description: |
+        The unique identifier of the user to activate.
+      required: true
+  responses:
+    '204':
+      $ref: ../components/responses/NoContent.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.Action.yaml
+    '404':
+      $ref: ../components/responses/NotFound.Account.yaml

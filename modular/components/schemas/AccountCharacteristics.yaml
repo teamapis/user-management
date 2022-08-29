@@ -1,0 +1,6 @@
+type: object
+properties:
+  not_mentionable:
+    type: boolean
+    example: false
+readOnly: true

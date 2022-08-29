@@ -1,0 +1,4 @@
+type: string
+description: |
+  A unix zoneinfo string describing the local timezone of the user
+example: America/Los_Angeles

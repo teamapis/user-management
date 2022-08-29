@@ -1,0 +1,24 @@
+description: |
+  You asre authenticated but one of the following is true:
+
+  - You do not have the authority to manage the user
+  - You do not have the authority to take the action
+  - You do not have authority over a specified domain
+content:
+  application/json:
+    schema:
+      type: object
+      oneOf:
+        - $ref: ../schemas/Response.Forbidden.Basic.yaml
+        - $ref: ../schemas/Response.Forbidden.Action.yaml
+        - $ref: ../schemas/Response.Forbidden.UnclaimedDomain.yaml
+        - $ref: ../schemas/Response.Forbidden.TargetUnverified.yaml
+      discriminator:
+        propertyName: key
+        mapping:
+          forbidden: ../schemas/Response.Forbidden.Basic.yaml
+          forbidden.action: ../schemas/Response.Forbidden.Action.yaml
+          forbidden.unclaimedDomain: ../schemas/Response.Forbidden.UnclaimedDomain.yaml
+          forbidden.targetUnverified: ../schemas/Response.Forbidden.TargetUnverified.yaml
+      example:
+        key: forbidden

@@ -1,0 +1,7 @@
+type: string
+description: The type of account
+enum:
+  - atlassian
+  - customer
+  - app
+readOnly: true

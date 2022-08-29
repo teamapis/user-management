@@ -1,0 +1,11 @@
+type: object
+oneOf:
+  - $ref: ./Manageability.Allowed.yaml
+  - $ref: ./Manageability.Unallowed.yaml
+discriminator:
+  propertyName: allowed
+  mapping:
+    'true': ./Manageability.Allowed.yaml
+    'false': ./Manageability.Unallowed.yaml
+example:
+  allowed: true

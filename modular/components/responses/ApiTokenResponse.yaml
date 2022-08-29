@@ -1,0 +1,29 @@
+description: API Token information
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - createdAt
+        - id
+        - label
+      properties:
+        label:
+          type: string
+          example: My Addon
+          description: Human readable description for the token.
+        lastAccess:
+          type: string
+          example: '2015-05-12T20:20:50.521Z'
+          description: >
+            Timestamp last time the token was used to Authenticate as a
+            UTC-ISO8601 string
+        createdAt:
+          type: string
+          example: '2015-04-12T23:20:50.522Z'
+          description: Timestamp of when the token was generated as a UTC-ISO8601 string
+        id:
+          type: string
+          description: >-
+            Container token id. This is the identifier of the system user
+            associated with the container token.

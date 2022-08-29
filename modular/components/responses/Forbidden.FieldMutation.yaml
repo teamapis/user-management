@@ -1,0 +1,20 @@
+description: |
+  You are authenticated but one of the following is true:
+
+  - You have no right to manage the target user
+  - You do not have the authority to change one or more requested properties
+content:
+  application/json:
+    schema:
+      oneOf:
+        - $ref: ../schemas/Response.Forbidden.Basic.yaml
+        - $ref: ../schemas/Response.Forbidden.ObjectMutability.yaml
+        - $ref: ../schemas/Response.Forbidden.TargetUnverified.yaml
+      discriminator:
+        propertyName: key
+        mapping:
+          forbidden: ../schemas/Response.Forbidden.Basic.yaml
+          forbidden.fieldMutation: ../schemas/Response.Forbidden.ObjectMutability.yaml
+          forbidden.targetUnverified: ../schemas/Response.Forbidden.TargetUnverified.yaml
+      example:
+        key: forbidden

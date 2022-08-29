@@ -1,0 +1,30 @@
+delete:
+  summary: Delete API token
+  description: Deletes a specifid API token by ID.
+  tags:
+    - Api-tokens
+  parameters:
+    - in: path
+      name: account_id
+      schema:
+        $ref: ../components/schemas/AccountId.yaml
+      description: The ID of the user
+      required: true
+    - name: tokenId
+      description: The ID of the API token
+      example: fake-tokenId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '204':
+      description: The API token was deleted
+    '400':
+      $ref: ../components/responses/BadRequest.Body.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.Action.yaml
+    '404':
+      $ref: ../components/responses/NotFound.Account.yaml

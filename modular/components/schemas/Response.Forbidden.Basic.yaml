@@ -1,0 +1,11 @@
+description: |
+  You are not authorized to access this resource
+type: object
+required:
+  - key
+properties:
+  key:
+    type: string
+    enum:
+      - forbidden
+    example: forbidden

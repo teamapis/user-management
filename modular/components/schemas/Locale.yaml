@@ -1,0 +1,3 @@
+type: string
+description: An IETF BCP 47 locale string
+example: en-US

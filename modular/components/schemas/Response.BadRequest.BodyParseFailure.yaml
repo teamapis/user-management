@@ -1,0 +1,9 @@
+description: |
+  The body was not parsed successfully.
+type: object
+required:
+  - key
+properties:
+  key:
+    type: string
+    example: bodyParseFailure

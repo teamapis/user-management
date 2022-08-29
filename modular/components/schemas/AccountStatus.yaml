@@ -1,0 +1,7 @@
+type: string
+description: The lifecycle status of the account
+enum:
+  - active
+  - inactive
+  - closed
+readOnly: true

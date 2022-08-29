@@ -1,0 +1,12 @@
+type: object
+required:
+  - key
+  - context
+properties:
+  key:
+    type: string
+    enum:
+      - forbidden.fieldMutation
+    example: forbidden.fieldMutation
+  context:
+    $ref: ./Manageability.Rule.ObjectMutability.yaml

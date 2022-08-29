@@ -1,0 +1,11 @@
+type: object
+description: |
+  You are allowed to take or write the action/property
+required:
+  - allowed
+properties:
+  allowed:
+    type: boolean
+    enum:
+      - true
+    example: true

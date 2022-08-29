@@ -1,0 +1,12 @@
+type: object
+required:
+  - key
+  - context
+properties:
+  key:
+    type: string
+    enum:
+      - forbidden.action
+    example: forbidden.action
+  context:
+    $ref: ./Manageability.Unallowed.yaml

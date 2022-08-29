@@ -1,0 +1,5 @@
+type: string
+example: https://www.example.com/avatars/userl
+description: |
+  The absolute URI (RFC3986) to the avatar name of the user.
+readOnly: true

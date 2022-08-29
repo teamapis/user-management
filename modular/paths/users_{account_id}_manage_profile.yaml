@@ -1,0 +1,75 @@
+get:
+  summary: Get profile
+  description: Returns information about a single Atlassian account by ID
+  tags:
+    - profile
+  parameters:
+    - in: path
+      name: account_id
+      schema:
+        $ref: ../components/schemas/AccountId.yaml
+      description: The ID of the user
+      required: true
+  responses:
+    '200':
+      description: |
+        You have permission to manage the user. The profile data is returned.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - account
+            properties:
+              account:
+                $ref: ../components/schemas/AtlassianAccountUser.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.Account.yaml
+patch:
+  summary: Update profile
+  description: >-
+    Updates fields in a user account. The `profile.write` privilege details
+    which fields you can change.
+  tags:
+    - profile
+  parameters:
+    - in: path
+      name: account_id
+      schema:
+        $ref: ../components/schemas/AccountId.yaml
+      description: The ID of the user to update
+      required: true
+  requestBody:
+    description: >-
+      The information to change, a subset of the mutable fields described in the
+      `profile.write` privilege.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/AtlassianAccountUser.yaml
+  responses:
+    '200':
+      description: |
+        You have permission to manage the user. The profile is updated.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - account
+            properties:
+              account:
+                $ref: ../components/schemas/AtlassianAccountUser.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.Body.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.FieldMutation.yaml
+    '404':
+      $ref: ../components/responses/NotFound.Account.yaml

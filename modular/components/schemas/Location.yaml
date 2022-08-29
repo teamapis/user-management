@@ -1,0 +1,4 @@
+type: string
+description: |
+  The physical location of the user
+example: Lompoc, CA

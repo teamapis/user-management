@@ -1,0 +1,18 @@
+description: |
+  You are authenticated but do not have the authority to take this action.
+content:
+  application/json:
+    schema:
+      type: object
+      oneOf:
+        - $ref: ../schemas/Response.Forbidden.Basic.yaml
+        - $ref: ../schemas/Response.Forbidden.Action.yaml
+        - $ref: ../schemas/Response.Forbidden.TargetUnverified.yaml
+      discriminator:
+        propertyName: key
+        mapping:
+          forbidden: ../schemas/Response.Forbidden.Basic.yaml
+          forbidden.action: ../schemas/Response.Forbidden.Action.yaml
+          forbidden.targetUnverified: ../schemas/Response.Forbidden.TargetUnverified.yaml
+      example:
+        key: forbidden

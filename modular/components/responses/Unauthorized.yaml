@@ -1,0 +1,12 @@
+description: You are unauthenticated.
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - key
+      properties:
+        key:
+          type: string
+          enum:
+            - unauthorized

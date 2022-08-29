@@ -1,0 +1,46 @@
+put:
+  summary: |
+    Set email
+  description: >
+    Sets the specified user's email address. Before using this endpoint, you
+    must [verify the target domain](https://confluence.atlassian.com/x/gjcWN) as
+    the new email address will be considered verified.
+
+    The permission to make use of this resource is exposed by the `email.set`
+    privilege.
+
+    This call invalidates all active sessions.
+  tags:
+    - email
+  parameters:
+    - in: path
+      name: account_id
+      schema:
+        $ref: ../components/schemas/AccountId.yaml
+      description: |
+        The ID of the user
+      required: true
+  requestBody:
+    description: |
+      An object containing the email address
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - email
+          properties:
+            email:
+              $ref: ../components/schemas/Email.yaml
+  responses:
+    '204':
+      $ref: ../components/responses/NoContent.yaml
+    '400':
+      $ref: ../components/responses/BadRequest.Body.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.UnclaimedDomain.yaml
+    '404':
+      $ref: ../components/responses/NotFound.Account.yaml

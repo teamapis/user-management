@@ -1,0 +1,25 @@
+type: object
+required:
+  - account_id
+  - account_status
+  - account_type
+  - name
+  - email
+  - picture
+properties:
+  account_id:
+    $ref: ./AccountId.yaml
+  account_type:
+    $ref: ./AccountType.yaml
+  account_status:
+    $ref: ./AccountStatus.yaml
+  name:
+    $ref: ./Name.yaml
+  picture:
+    $ref: ./Avatar.yaml
+  email:
+    allOf:
+      - $ref: ./Email.yaml
+    readOnly: true
+  characteristics:
+    $ref: ./AccountCharacteristics.yaml

@@ -1,0 +1,4 @@
+type: string
+description: |
+  The organisation to which the user belongs
+example: Amalgamated Investigations

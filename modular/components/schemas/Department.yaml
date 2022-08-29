@@ -1,0 +1,4 @@
+type: string
+description: |
+  The department in which the user works
+example: Investigations

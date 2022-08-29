@@ -1,0 +1,14 @@
+type: object
+description: |
+  You are not allowed to take or write the action/property
+required:
+  - allowed
+  - reason
+properties:
+  allowed:
+    type: boolean
+    enum:
+      - false
+    example: false
+  reason:
+    $ref: ./Manageability.RestrictionReason.yaml

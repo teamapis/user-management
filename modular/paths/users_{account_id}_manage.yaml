@@ -1,0 +1,79 @@
+get:
+  summary: Get user management permissions
+  description: >-
+    Returns the set of permissions you have for managing the specified Atlassian
+    account
+  tags:
+    - manage
+  parameters:
+    - in: path
+      name: account_id
+      schema:
+        $ref: ../components/schemas/AccountId.yaml
+      description: The user account to manage
+      required: true
+    - name: privileges
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - profile
+            - profile.write
+            - profile.read
+            - email.set
+            - lifecycle.enablement
+            - apiToken.read
+            - apiToken.delete
+  responses:
+    '200':
+      description: >
+        You have permission to manage at least some aspect of the specified user
+        account. Restrictions around the privileges specified are returned.
+
+        - _profile_: DEPRECATED, replace by profile.write
+
+        - _profile.read_: have permission to read the profile data of the user
+        account (at GET ./profile)
+
+        - _profile.write_: refers to the object mutability of the user's profile
+        (at PATCH ./profile)
+
+        - _email.set_: have permission to set the user's email address (at PUT
+        ./email)
+
+        - _lifecycle.enablement_: have permission to activate and deactivate the
+        user's account (at POST ./lifecycle/enable AND ./lifecycle/disable)
+
+        - _apiToken.read_: have permission to list the user's API tokens (at GET
+        ./api-tokens)
+
+        - _apiToken.delete_: have permission to delete API tokens from the
+        account (at DELETE ./api-tokens/{tokenId})
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              profile:
+                $ref: ../components/schemas/Manageability.Rule.ObjectMutability.yaml
+              profile.write:
+                $ref: ../components/schemas/Manageability.Rule.ObjectMutability.yaml
+              profile.read:
+                $ref: ../components/schemas/Manageability.Rule.Simple.yaml
+              email.set:
+                $ref: ../components/schemas/Manageability.Rule.Simple.yaml
+              lifecycle.enablement:
+                $ref: ../components/schemas/Manageability.Rule.Simple.yaml
+              apiToken.read:
+                $ref: ../components/schemas/Manageability.Rule.Simple.yaml
+              apiToken.delete:
+                $ref: ../components/schemas/Manageability.Rule.Simple.yaml
+    '401':
+      $ref: ../components/responses/Unauthorized.yaml
+    '403':
+      $ref: ../components/responses/Forbidden.yaml
+    '404':
+      $ref: ../components/responses/NotFound.Account.yaml

@@ -1,0 +1,4 @@
+type: string
+description: |
+  The job title of the user
+example: Lead Investigator

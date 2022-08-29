@@ -1,0 +1,14 @@
+allOf:
+  - $ref: ./User.yaml
+  - type: object
+    required:
+      - nickname
+    properties:
+      nickname:
+        $ref: ./Nickname.yaml
+      zoneinfo:
+        $ref: ./ZoneInfo.yaml
+      locale:
+        $ref: ./Locale.yaml
+      extended_profile:
+        $ref: ./ExtendedProfile.yaml

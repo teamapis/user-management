@@ -1,0 +1,6 @@
+type: string
+pattern: |
+  [a-zA-Z0-9_|:-]{1,128}
+description: A unique account identifier
+example: 557057:4f9acfd2-6155-419b-8de5-5b5cf27a59a0
+readOnly: true

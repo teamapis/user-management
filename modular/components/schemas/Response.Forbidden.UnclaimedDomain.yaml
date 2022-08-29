@@ -1,0 +1,17 @@
+type: object
+required:
+  - key
+properties:
+  key:
+    type: string
+    enum:
+      - forbidden.unclaimedDomain
+    example: forbidden.unclaimedDomain
+  context:
+    type: object
+    required:
+      - domain
+    properties:
+      domain:
+        type: string
+        example: vanlowe-pi.net
